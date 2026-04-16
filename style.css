@@ -2,29 +2,29 @@
    Design System & Variables
    ========================================================================== */
    :root {
-    /* Color Palette - Modern Pastel Aesthetic */
-    --color-primary: #ffb6c1; /* Soft Pink */
-    --color-primary-dark: #ff8fa3;
-    --color-secondary: #cbaacb; /* Soft Purple */
-    --color-secondary-dark: #a881a8;
-    --color-accent: #b5ead7; /* Soft Mint */
-    --color-accent-dark: #8ccba6;
+    /* Color Palette - Professional Indigo */
+    --color-primary: #6c63ff;
+    --color-primary-dark: #4f46e5;
+    --color-secondary: #14b8a6;
+    --color-secondary-dark: #0f766e;
+    --color-accent: #dbeafe;
+    --color-accent-dark: #2563eb;
     
-    --color-bg: #fffbfb;
-    --color-text: #2f2e41;
-    --color-text-muted: #6c757d;
+    --color-bg: #f8fafc;
+    --color-text: #0f172a;
+    --color-text-muted: #64748b;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, #fff0f5 0%, #f3e6ff 100%);
-    --gradient-pastel: linear-gradient(135deg, #ffeff4 0%, #eef0ff 100%);
+    --gradient-hero: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+    --gradient-pastel: linear-gradient(135deg, #eef2ff 0%, #ecfeff 100%);
     
     /* Typography */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
     
     /* Shadows & Glassmorphism */
-    --shadow-soft: 0 10px 40px rgba(255, 182, 193, 0.15);
-    --shadow-hover: 0 15px 50px rgba(255, 182, 193, 0.3);
+    --shadow-soft: 0 10px 40px rgba(79, 70, 229, 0.12);
+    --shadow-hover: 0 15px 50px rgba(79, 70, 229, 0.2);
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: 1px solid rgba(255, 255, 255, 0.5);
     
@@ -77,7 +77,7 @@ section.page-section {
 
 /* Utilities */
 .text-primary { color: var(--color-primary) !important; }
-.bg-light-pastel { background-color: #faf8fa; }
+.bg-light-pastel { background-color: #f1f5f9; }
 .bg-gradient-pastel { background: var(--gradient-pastel); }
 .dot { color: var(--color-primary); }
 
@@ -89,14 +89,14 @@ section.page-section {
     font-family: var(--font-heading);
     font-weight: 600;
     transition: var(--transition-smooth);
-    box-shadow: 0 8px 15px rgba(255, 182, 193, 0.3);
+    box-shadow: 0 8px 15px rgba(79, 70, 229, 0.25);
 }
 
 .btn-custom:hover, .btn-custom:focus {
     background-color: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
     transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(255, 182, 193, 0.4);
+    box-shadow: 0 12px 20px rgba(79, 70, 229, 0.3);
     color: white;
 }
 
@@ -113,7 +113,7 @@ section.page-section {
     background-color: var(--color-primary);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(255, 182, 193, 0.3);
+    box-shadow: 0 8px 15px rgba(79, 70, 229, 0.24);
 }
 
 /* ==========================================================================
@@ -166,11 +166,43 @@ section.page-section {
    Hero Section
    ========================================================================== */
 .hero {
-    height: 100vh;
-    min-height: 700px;
-    background: var(--gradient-hero);
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(238, 242, 255, 0.85)),
+        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1600&ixlib=rb-4.0.3') center/cover no-repeat;
     position: relative;
     overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(238, 242, 255, 0.82), rgba(224, 231, 255, 0.52));
+    z-index: 0;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: var(--shadow-soft);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.hero-eyebrow::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent-dark);
+    box-shadow: 0 0 0 6px rgba(140, 203, 166, 0.16);
 }
 
 .hero .name-title {
@@ -187,8 +219,107 @@ section.page-section {
 }
 
 .hero .hero-text {
-    max-width: 600px;
+    max-width: 620px;
     color: var(--color-text-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.hero-highlights {
+    max-width: 640px;
+}
+
+.hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.9rem 1.15rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 30px rgba(47, 46, 65, 0.08);
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.hero-chip i {
+    color: var(--color-primary-dark);
+}
+
+.hero-visual {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.hero-image-card {
+    position: relative;
+    padding: 1rem;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.hero-main-image {
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    display: block;
+}
+
+.hero-card-content {
+    position: absolute;
+    left: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+    padding: 1.25rem 1.4rem;
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+}
+
+.hero-card-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+.hero-card-title {
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.hero-card-text {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.hero-floating-card {
+    position: absolute;
+    left: -2.5rem;
+    bottom: 2rem;
+    max-width: 220px;
+    padding: 1.25rem 1.4rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+}
+
+.hero-floating-number {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.glass-card-strong {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.1);
 }
 
 /* Decorative abstract shapes */
@@ -203,7 +334,7 @@ section.page-section {
 .shape-1 {
     width: 400px;
     height: 400px;
-    background: rgba(255, 182, 193, 0.4);
+    background: rgba(108, 99, 255, 0.28);
     top: -10%;
     left: -10%;
 }
@@ -211,7 +342,7 @@ section.page-section {
 .shape-2 {
     width: 300px;
     height: 300px;
-    background: rgba(181, 234, 215, 0.4);
+    background: rgba(20, 184, 166, 0.24);
     bottom: 10%;
     right: -5%;
     animation-delay: 2s;
@@ -220,7 +351,7 @@ section.page-section {
 .shape-3 {
     width: 250px;
     height: 250px;
-    background: rgba(203, 170, 203, 0.3);
+    background: rgba(37, 99, 235, 0.18);
     top: 40%;
     left: 60%;
     animation-delay: 4s;
@@ -249,6 +380,11 @@ section.page-section {
     position: relative;
 }
 
+.about-img {
+    min-height: 560px;
+    object-fit: cover;
+}
+
 .img-backdrop {
     position: absolute;
     top: 20px;
@@ -268,6 +404,51 @@ section.page-section {
     left: 10px;
 }
 
+.about-image-badge {
+    position: absolute;
+    right: -1.5rem;
+    bottom: 2rem;
+    max-width: 260px;
+    padding: 1rem 1.2rem;
+    border-radius: 1.25rem;
+}
+
+.about-badge-title {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary-dark);
+}
+
+.about-badge-text {
+    color: var(--color-text);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.about-eyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary-dark);
+}
+
+.about-title {
+    max-width: 700px;
+    line-height: 1.35;
+}
+
+.about-copy {
+    font-size: 1.03rem;
+    line-height: 1.9;
+}
+
 .glass-card {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
@@ -284,6 +465,14 @@ section.page-section {
     background: #fff;
 }
 
+.about-info-card h5 {
+    font-size: 1rem;
+}
+
+.about-info-card p {
+    line-height: 1.75;
+}
+
 /* ==========================================================================
    Skills Section
    ========================================================================== */
@@ -295,6 +484,25 @@ section.page-section {
 .skill-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover) !important;
+}
+
+.skills-intro {
+    max-width: 720px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.skill-label {
+    display: inline-block;
+    margin-bottom: 0.9rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(108, 99, 255, 0.08);
+    color: var(--color-primary-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .skill-icon-bg {
@@ -312,12 +520,12 @@ section.page-section {
     transform: rotate(0) scale(1.1);
 }
 
-.bg-soft-primary { background: rgba(255, 182, 193, 0.2); }
-.text-primary-dark { color: #d63384; font-weight: 500;}
-.bg-soft-secondary { background: rgba(203, 170, 203, 0.2); }
-.text-secondary-dark { color: #6f42c1; font-weight: 500;}
-.bg-soft-accent { background: rgba(181, 234, 215, 0.3); }
-.text-accent-dark { color: #20c997; font-weight: 500;}
+.bg-soft-primary { background: rgba(108, 99, 255, 0.14); }
+.text-primary-dark { color: #4f46e5; font-weight: 500;}
+.bg-soft-secondary { background: rgba(20, 184, 166, 0.14); }
+.text-secondary-dark { color: #0f766e; font-weight: 500;}
+.bg-soft-accent { background: rgba(37, 99, 235, 0.12); }
+.text-accent-dark { color: #2563eb; font-weight: 500;}
 
 /* ==========================================================================
    Projects Section
@@ -394,7 +602,7 @@ section.page-section {
 
 .form-control:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 0.25rem rgba(255, 182, 193, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(108, 99, 255, 0.18);
     background-color: #fff !important;
 }
 
@@ -428,6 +636,53 @@ section.page-section {
 }
 
 /* ==========================================================================
+   Project Detail Pages
+   ========================================================================== */
+.project-detail-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 60%, #ecfeff 100%);
+}
+
+.project-detail-image {
+    width: 100%;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    object-fit: cover;
+}
+
+.project-meta-card,
+.feature-list-card,
+.project-cta-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.meta-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.meta-value {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.detail-list {
+    padding-left: 1.1rem;
+    margin-bottom: 0;
+    color: var(--color-text-muted);
+}
+
+.detail-list li + li {
+    margin-top: 0.75rem;
+}
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 @media (max-width: 991.98px) {
@@ -438,5 +693,80 @@ section.page-section {
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         margin-top: 1rem;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 7rem;
+    }
+
+    .hero .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-floating-card {
+        left: 1rem;
+        bottom: 1rem;
+    }
+
+    .about-img {
+        min-height: 440px;
+    }
+
+    .about-image-badge {
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-main-image {
+        height: 440px;
+    }
+
+    .hero-card-content {
+        left: 1.25rem;
+        right: 1.25rem;
+        bottom: 1.25rem;
+    }
+
+    .hero-card-title {
+        font-size: 1.05rem;
+    }
+
+    .hero-floating-card {
+        position: static;
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    .about-img {
+        min-height: auto;
+    }
+
+    .about-image-badge {
+        position: static;
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero {
+        padding-bottom: 3rem;
+    }
+
+    .hero-highlights {
+        gap: 0.75rem !important;
+    }
+
+    .hero-chip {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-main-image {
+        height: 360px;
     }
 }
